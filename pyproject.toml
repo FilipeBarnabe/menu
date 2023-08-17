@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "menu"
+version = "0.1.0"
+description = "Bar menu"
+authors = ["FilipeBarnabe <filipebarnabe99@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.4"
+django-bootstrap3 = "^23.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
