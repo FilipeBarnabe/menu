@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for category in object_list.all %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">{{object_list}}</th>
+            <th scope="col"></th>
+            <th scope="col" style="text-align:right">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- {% for beverage in beverage_list %}
+        <tr>
+            <th scope="row">{{beverage.name}}</th>
+            <td></td> 
+            <td style="text-align:right">{{beverage.price}} €</td>
+        </tr>
+        {% endfor %} -->
+    </tbody>
+</table>
+{% endfor %}
+<!-- <ul>
+    <div class="row row-cols-2 g-3">
+        {% for beverage in object_list %}
+        <div class="col">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{beverage.image.url}}" class="card-img-top" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{beverage.name}}</h5>
+                            <p class="card-text">
+                                {{beverage.description}}
+                            </p>
+                            <button type="button" class="btn btn-secondary btn-sm float-right"
+                                disabled>{{beverage.price}}€</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <li>No beverages in the category {{view.kwargs.category_id}} yet</li>
+        {% endfor %}
+    </div>
+    </div>
+</ul> -->
+{% endblock %}

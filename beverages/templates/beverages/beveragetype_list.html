@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table">
+    {% for beverage_type in object_list %}
+    <thead>
+        <tr>
+            <th>
+                <h4>{{beverage_type}}</h4>
+            </th>
+            <th></th>
+            <th scope="col" style="text-align:right">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for beverage in beverage_type.beverage_set.all %}
+        <tr>
+            <td>{{beverage.name}}</td>
+            <td>
+                {% if beverage.image_link and beverage.description %}
+                <button type="button" class="btn btn-outline-secondary btn-sm">See More</button>
+                {%endif%}
+            </td>
+            <td style="text-align:right">{{beverage.price}} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock %}
