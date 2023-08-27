@@ -2,29 +2,28 @@
 
 {% block content %}
 <table class="table">
+    {% for beverage_type in object_list %}
     <thead>
         <tr>
-            <th scope="col">
-                {% load static %}
-                <h1>{{category}}</h1>
+            <th>
+                <h4>{{beverage_type}}</h4>
             </th>
             <th></th>
             <th scope="col" style="text-align:right">Price</th>
         </tr>
     </thead>
-    {% for beverage in object_list %}
     <tbody>
+        {% for beverage in beverage_type.beverage_set.all %}
         <tr>
-            <td>{{beverage}}</td>
+            <td>{{beverage.name}}</td>
             <td>
                 {% if beverage.image_link and beverage.description %}
-                <a href="{% url 'beverages:detail' pk=beverage.id%}" class="btn btn-outline-secondary btn-sm"
-                    role="button">See
-                    More</a>
+                <button type="button" class="btn btn-outline-secondary btn-sm">See More</button>
                 {%endif%}
             </td>
             <td style="text-align:right">{{beverage.price}} €</td>
         </tr>
+        {% endfor %}
     </tbody>
     {% endfor %}
 </table>

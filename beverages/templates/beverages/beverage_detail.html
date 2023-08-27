@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="card" style="width: 18rem;">
+    <img src="{{ object.image_link }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{object.name}}</h5>
+        <p class="card-text">{{object.description}}</p>
+        <p class="card-text" style="text-align:right">{{object.price}} €</p>
+    </div>
+</div>
+{% endblock %}
