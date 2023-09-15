@@ -21,12 +21,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-pikux29)x0&m6-9*fq5b^&5a1)izp$27zgd4wz+!x4k#xmn$r0"
+# SECRET_KEY = "django-insecure-pikux29)x0&m6-9*fq5b^&5a1)izp$27zgd4wz+!x4k#xmn$r0"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "0.0.0.0"]
 
 
 # Application definition
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -121,6 +124,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / STATIC_URL,
 ]
+STATIC_ROOT = "static_root/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
