@@ -1,5 +1,8 @@
 services:
   web:
+    environment:
+      - DJANGO_SECRET_KEY=DypzDgRsFXQflE76uqNyNBJkSVQmp2yT
+      - DJANGO_DEBUG=False
     build: .
     ports:
       - "5100:8000"
