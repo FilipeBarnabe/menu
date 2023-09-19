@@ -13,5 +13,9 @@ services:
     ports:
       - "5100:8000"
     restart: on-failure
-    links:
-      - postgres
+
+networks:
+  network1:
+    external:
+      true
+    name: bridge
