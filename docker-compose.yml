@@ -1,6 +1,4 @@
-networks:
-  bridge:
-    external: true
+
 services:
   web:
     environment:
@@ -13,8 +11,7 @@ services:
       - DB_PORT=$DB_PORT
     build: .
     pull_policy: build
-    networks:
-      - bridge
+    network_mode: bridge
     ports:
       - "5100:8000"
     restart: on-failure
