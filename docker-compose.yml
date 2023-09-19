@@ -10,12 +10,9 @@ services:
       - DB_PORT=$DB_PORT
     build: .
     pull_policy: build
+    networks:
+      - bridge
     ports:
       - "5100:8000"
     restart: on-failure
 
-networks:
-  network1:
-    external:
-      true
-    name: bridge
