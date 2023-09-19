@@ -3,6 +3,11 @@ services:
     environment:
       - DJANGO_SECRET_KEY=$SECRET_KEY
       - DJANGO_DEBUG=$DEBUG
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASSWORD=$DB_PASSWORD
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
     build: .
     pull_policy: build
     ports:
