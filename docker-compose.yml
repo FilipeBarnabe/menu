@@ -1,5 +1,5 @@
 networks:
-  bridge-network:
+  bridge:
     external: true
 services:
   web:
