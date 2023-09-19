@@ -1,3 +1,6 @@
+networks:
+  bridge-network:
+    external: true
 services:
   web:
     environment:
