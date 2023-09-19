@@ -4,6 +4,8 @@ services:
       - DJANGO_SECRET_KEY=$SECRET_KEY
       - DJANGO_DEBUG=$DEBUG
     build: .
+    pull_policy: build
+    pull: true
     ports:
       - "5100:8000"
     restart: on-failure
