@@ -16,3 +16,8 @@ services:
       - "5100:8000"
     restart: on-failure
 
+    volumes:
+      - "web:/app/static_root"
+
+volumes:
+  web:
