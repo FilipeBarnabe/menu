@@ -12,8 +12,8 @@ services:
     build: .
     pull_policy: build
     network_mode: bridge
-    expose:
-      - "8000"
+    ports:
+      - "5100:8000"
     restart: on-failure
 
     volumes:
