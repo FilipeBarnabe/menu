@@ -1,6 +1,7 @@
-
+version: "3.0"
 services:
   web:
+    hostname: menu-osseloa
     environment:
       - DJANGO_SECRET_KEY=$SECRET_KEY
       - DJANGO_DEBUG=$DEBUG
