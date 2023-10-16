@@ -30,7 +30,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = ["*", "0.0.0.0", "osseloa.com"]
 
-CSRF_TRUSTED_ORIGINS = ["osseloa.com"]
+CSRF_TRUSTED_ORIGINS = ["http://osseloa.com"]
 
 
 # Application definition
