@@ -19,6 +19,8 @@ services:
 
     volumes:
       - "web:/app/static_root"
-
+      - "media:/app/media"
+      
 volumes:
   web:
+  media:
