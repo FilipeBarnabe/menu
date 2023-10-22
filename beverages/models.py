@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class BeverageType(models.Model):
     type_name = models.CharField(max_length=20)
+    type_icon = models.CharField(max_length=50, default="fa-glass-cheers")
 
     class Meta:
         ordering = ["type_name"]
