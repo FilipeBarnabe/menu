@@ -6,8 +6,8 @@ class BeverageType(models.Model):
     type_name = models.CharField(max_length=20)
     type_icon = models.CharField(max_length=50, default="fa-glass-cheers")
 
-    class Meta:
-        ordering = ["type_name"]
+    # class Meta:
+    #     ordering = ["type_name"]
 
     def __str__(self) -> str:
         return self.type_name
