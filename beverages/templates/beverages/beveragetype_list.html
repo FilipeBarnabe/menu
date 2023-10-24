@@ -27,7 +27,7 @@
                 {% if forloop.first %}
                 <li class="nav-item">
                     <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
-                        href="#{{category}}">
+                        href="#{{category|cut:" "}}">
                         <i class="fa {{category.type_icon}} fa-2x text-primary"></i>
                         <div class="ps-3">
                             <!-- <small class="text-body">Popular</small> -->
@@ -38,7 +38,7 @@
                 {% else %}
                 <li class="nav-item">
                     <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill"
-                        href="#{{category}}">
+                        href="#{{category|cut:" "}}">
                         <i class="fa {{category.type_icon}} fa-2x text-primary"></i>
                         <div class="ps-3">
                             <!-- <small class="text-body">Special</small> -->
@@ -52,7 +52,7 @@
             <div class="tab-content">
                 {% for category in object_list %}
                 {% if forloop.first %}
-                <div id="{{category}}" class="tab-pane fade show p-0 active">
+                <div id="{{category |cut:" "}}" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         {% for beverage in category.beverage_set.all %}
                         <div class="col-lg-6">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 {% else %}
-                <div id="{{category}}" class="tab-pane fade show p-0">
+                <div id="{{category|cut:" "}}" class="tab-pane fade show p-0">
                     <div class="row g-4">
                         {% for beverage in category.beverage_set.all %}
                         <div class="col-lg-6">
