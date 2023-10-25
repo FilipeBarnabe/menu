@@ -39,7 +39,7 @@ class Beverage(models.Model):
     order = models.IntegerField(default=1)
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["order", "beverage_type", "name"]
 
     def __str__(self) -> str:
         return self.name
