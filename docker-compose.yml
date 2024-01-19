@@ -12,11 +12,12 @@ services:
       - DB_PORT=$DB_PORT
     build: .
     pull_policy: build
-    network_mode: bridge
-    expose:
-      - "8000"
-    # ports:
-    #   - "5001:8000"
+    networks:
+      - menu
+    # expose:
+    #   - "8000"
+    ports:
+      - "5001:8000"
     restart: on-failure
 
     volumes:
@@ -26,3 +27,8 @@ services:
 volumes:
   web:
   media:
+
+networks:
+  menu:
+    # Use a custom driver
+    driver: menu_network
