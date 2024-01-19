@@ -30,5 +30,6 @@ volumes:
 
 networks:
   menu:
-    # Use a custom driver
-    driver: menu_network
+    name: menu_network
+    external:
+      true
