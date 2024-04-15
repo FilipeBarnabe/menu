@@ -2,15 +2,6 @@ from __future__ import annotations
 from django.db import models
 
 
-def get_new_default() -> int:
-    try:
-        return (
-            BeverageType.objects.all().aggregate(models.Max("order"))["order__max"] + 1
-        )
-    except:
-        return 1
-
-
 # Create your models here.
 class BeverageType(models.Model):
     type_name = models.CharField(max_length=20)
@@ -37,6 +28,7 @@ class Beverage(models.Model):
     beverage_type = models.ForeignKey(BeverageType, on_delete=models.PROTECT)
     description = models.TextField(blank=True)
     order = models.IntegerField(default=1)
+    recipe = models.JSONField(null=True, blank=True)
 
     class Meta:
         ordering = ["beverage_type", "order", "name"]
