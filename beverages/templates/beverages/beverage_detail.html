@@ -3,11 +3,16 @@
 {% block content %}
 <br>
 <div class="card" style="width: 18rem;">
+    {% if object.image_link %}
     <img src="{{ object.image_link }}" class="card-img-top" alt="...">
+    {% endif %}
     <div class="card-body">
         <h5 class="card-title">{{object.name}}</h5>
         <p class="card-text">{{object.description}}</p>
         <p class="card-text" style="text-align:right">{{object.price}} €</p>
+        {% for ingredient in object.recipe %}
+        <p class="card-text">{{ingredient.name}}- {{ingredient.amount}} {{ingredient.unit}}</p>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

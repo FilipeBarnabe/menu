@@ -1,8 +1,7 @@
 from typing import Any, Dict
 from django.db.models.query import QuerySet
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Beverage, BeverageType
 
@@ -24,7 +23,7 @@ class BeverageListView(ListView):
         return context
 
 
-class BeverageDetailView(DetailView):
+class BeverageDetailView(LoginRequiredMixin, DetailView):
     model = Beverage
 
 
@@ -32,11 +31,11 @@ class BeverageTypeListView(ListView):
     model = BeverageType
 
 
-class BeverageTypeDetailView(DetailView):
-    queryset = BeverageType.objects.all()
+# class BeverageTypeDetailView(DetailView):
+#     queryset = BeverageType.objects.all()
 
-    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
-        return super().get_context_data(**kwargs)
+#     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+#         return super().get_context_data(**kwargs)
 
 
 class FullMenuListView(ListView):

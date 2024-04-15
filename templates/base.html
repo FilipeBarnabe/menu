@@ -54,6 +54,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
+                        {% if user.is_authenticated %}
+                        <a href="#" class="nav-item nav-link active">Authenticated</a>
+                        {% endif %}
                         <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
                         <a href="{% url 'beverages:categories' %}" class="nav-item nav-link">Menu</a>
                     </div>

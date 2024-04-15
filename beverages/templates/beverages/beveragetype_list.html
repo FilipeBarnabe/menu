@@ -49,27 +49,38 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+            {% if user.is_authenticated %}
             <div class="tab-content">
                 {% for category in object_list %}
                 {% if forloop.first %}
                 <div id="{{category |cut:" "}}" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
                         {% for beverage in category.beverage_set.all %}
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center">
-                                {% if beverage.image %}
-                                <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
-                                    style="width: 80px;">
-                                {% endif %}
-                                <div class="w-100 d-flex flex-column text-start ps-4">
-                                    <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                        <span>{{beverage}}</span>
-                                        <span class="text-primary">{{beverage.price}} €</span>
-                                    </h5>
-                                    <small class="fst-italic">{{beverage.description}}</small>
+                        <a href="{% url 'beverages:detail' beverage.pk %}">
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center">
+                                    {% if beverage.image %}
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
+                                        style="width: 80px;">
+                                    {% endif %}
+                                    <div class="w-100 d-flex flex-column text-start ps-4">
+                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                            <span>{{beverage}}</span>
+                                            <span class="text-primary">{{beverage.price}} €</span>
+                                        </h5>
+                                        <small class="fst-italic">
+                                            {% for ingredient in beverage.recipe %}
+                                            {% if forloop.first %}
+                                            {{ ingredient.name }}
+                                            {% else %}
+                                            • {{ ingredient.name }}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
@@ -77,27 +88,108 @@
                 <div id="{{category|cut:" "}}" class="tab-pane fade show p-0">
                     <div class="row g-4">
                         {% for beverage in category.beverage_set.all %}
-                        <div class="col-lg-6">
-                            <div class="d-flex align-items-center">
-                                {% if beverage.image %}
-                                <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
-                                    style="width: 80px;">
-                                {% endif %}
-                                <div class="w-100 d-flex flex-column text-start ps-4">
-                                    <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                        <span>{{beverage}}</span>
-                                        <span class="text-primary">{{beverage.price}} €</span>
-                                    </h5>
-                                    <small class="fst-italic">{{beverage.description}}</small>
+                        <a href="{% url 'beverages:detail' beverage.pk %}">
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center">
+                                    {% if beverage.image %}
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
+                                        style="width: 80px;">
+                                    {% endif %}
+                                    <div class="w-100 d-flex flex-column text-start ps-4">
+                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                            <span>{{beverage}}</span>
+                                            <span class="text-primary">{{beverage.price}} €</span>
+                                        </h5>
+                                        <small class="fst-italic">
+                                            {% for ingredient in beverage.recipe %}
+                                            {% if forloop.first %}
+                                            {{ ingredient.name }}
+                                            {% else %}
+                                            • {{ ingredient.name }}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         {% endfor %}
                     </div>
                 </div>
                 {% endif %}
                 {% endfor %}
             </div>
+            {% else %}
+            <div class="tab-content">
+                {% for category in object_list %}
+                {% if forloop.first %}
+                <div id="{{category |cut:" "}}" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        {% for beverage in category.beverage_set.all %}
+                        <a href="{% url 'beverages:detail' beverage.pk %}">
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center">
+                                    {% if beverage.image %}
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
+                                        style="width: 80px;">
+                                    {% endif %}
+                                    <div class="w-100 d-flex flex-column text-start ps-4">
+                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                            <span>{{beverage}}</span>
+                                            <span class="text-primary">{{beverage.price}} €</span>
+                                        </h5>
+                                        <small class="fst-italic">
+                                            {% for ingredient in beverage.recipe %}
+                                            {% if forloop.first %}
+                                            {{ ingredient.name }}
+                                            {% else %}
+                                            • {{ ingredient.name }}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div id="{{category|cut:" "}}" class="tab-pane fade show p-0">
+                    <div class="row g-4">
+                        {% for beverage in category.beverage_set.all %}
+                        <a href="{% url 'beverages:detail' beverage.pk %}">
+                            <div class="col-lg-6">
+                                <div class="d-flex align-items-center">
+                                    {% if beverage.image %}
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{beverage.image.url}}" alt=""
+                                        style="width: 80px;">
+                                    {% endif %}
+                                    <div class="w-100 d-flex flex-column text-start ps-4">
+                                        <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                            <span>{{beverage}}</span>
+                                            <span class="text-primary">{{beverage.price}} €</span>
+                                        </h5>
+                                        <small class="fst-italic">
+                                            {% for ingredient in beverage.recipe %}
+                                            {% if forloop.first %}
+                                            {{ ingredient.name }}
+                                            {% else %}
+                                            • {{ ingredient.name }}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
