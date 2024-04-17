@@ -37,14 +37,14 @@ from django_json_widget.widgets import JSONEditorWidget
 #     formfield_overrides = {JSONField: {"widget": PrettyJSONWidget}}
 
 
-@admin.register(Beverage)
-class YourModelAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        JSONField: {"widget": JSONEditorWidget},
-    }
+# @admin.register(Beverage)
+# class YourModelAdmin(admin.ModelAdmin):
+#     formfield_overrides = {
+#         JSONField: {"widget": JSONEditorWidget},
+#     }
 
 
-# admin.site.register(Beverage)
+admin.site.register(Beverage)
 admin.site.register(BeverageType)
 # admin.site.register(Ingredients)
 # admin.site.register(Recipe)
